@@ -1,0 +1,17 @@
+
+
+Compression:
+Should I compress the files before I send them? I could use a basic hoffman
+compression to reduce the file size without too much complexity. The new file
+object would consist of [encoding table, encoded file].
+
+
+Fast Update:
+How should the process run in the background to not eat power / cpu
+and still be able to live update files when something is added?
+
+
+Support Removal:
+How should the system handle file removal? Does the directory maintain
+a edit date that includes when a file has been removed? If so, removal
+of a file should be a supported operation.

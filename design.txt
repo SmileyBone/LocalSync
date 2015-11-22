@@ -13,6 +13,9 @@ Checking versions for remote vs local files
 File transfer transaction has XXX phases:
 
 1:Discovery
+  ->listen to UDP broadcasts for other computers running LocalSync
+  ->broadcast UDP saying that LocalSync is running, and provide a connection port.
+  ->when remote is detected generate a connection response and bind to the provided port
 
 2:Check for matched folders
 
