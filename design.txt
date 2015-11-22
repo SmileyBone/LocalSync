@@ -1,0 +1,45 @@
+Goal:
+Keep designated folders synced across a local network.
+This should also work across platforms, not just on windows.
+
+
+Subproblems:
+Finding folders that should be synced
+
+Discovering other computers running sync
+
+Checking versions for remote vs local files
+
+File transfer transaction has XXX phases:
+
+1:Discovery
+
+2:Check for matched folders
+
+3:Send / Receive file edit dates
+  ->This may not be as reliable as maintaining a hashed versions history
+
+4:Compute request for updated files
+  ->Check received versions against the local versions and generate a request
+    for the new files
+  ->Concervitive version of this only requests new files, and never changes files
+    already on disk.
+
+5:Recive the new files and save them to the disk
+
+
+"Entangled" folders are set by hidden .entangled file in fixed location, with
+the following rules:
+Relations are defined by line position of the sync file as follows:
+
+/path/to/dir/one
+/path/to/dir/two
+/another/other/folder
+
+will sync with the folders on the remote:
+
+\this\is\a\windows\path
+\another\win\path
+
+With the final folder not being synced to that machine. This also allows for empty
+lines to be passed over to skip earlier folders
