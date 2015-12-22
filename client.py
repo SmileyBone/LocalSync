@@ -19,14 +19,22 @@ class client(object):
         address = (ip, int(remote_port))
         print "connecting to:", address
         self.soc.connect(address)
+        print "socket connected at address ", self.soc.getsockname()
 
 if __name__ == "__main__":
     import time
     c = client()
     c.connect()
-    message = c.soc.recv(1024)
-    print message
-    c.soc.send("Yup, this thing is on.")
-    time.sleep(2)
-    c.soc.close()
+
+    lastTime = time.time()
+    done = False
+    while not done:
+        try:
+            t = time.time()
+            if t - lastTime > 1:
+                lastTime = t
+                c.soc.send("Hello from client at time:" + str(t))
+        except KeyboardInterrupt:
+            c.soc.close()
+            done = True
     print "done"
