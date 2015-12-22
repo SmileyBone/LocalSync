@@ -1,28 +1,32 @@
 import sys
-import socked
+from socket import *
 import time
 
 """network handles multiple connections"""
 class network(object):
+    broadcast_port = 5005
+
     def __init__(self):
-        pass
+        self.udp_socket = socket(AF_INET, SOCK_DGRAM)
+        self.udp_socket.bind('', 0)
+        self.udp_socket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+
+        #maintain a list of connected devices
+        self.connections = []
 
     """send looking for connections """
     def broadcast(self):
         pass
-        
+
+
     def connect(self):
         pass
 
 
-"""the network class handles one connection only"""
-class _connection(object):
-    def __init__(self, connection):
-        pass
 
-    """given a payload send it to the remote"""
-    def send(self, payload):
-        pass
+if __name__ == "__main__":
+    """run some tests on a local machine for sending and reciving
+    data"""
 
-    def receive(self):
-        pass
+    netA = network()
+    netB = network()

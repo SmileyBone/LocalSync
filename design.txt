@@ -46,3 +46,18 @@ will sync with the folders on the remote:
 
 With the final folder not being synced to that machine. This also allows for empty
 lines to be passed over to skip earlier folders
+
+
+
+
+
+
+
+
+
+Network
+init the first listener
+start broadcasting the details for the listener connection
+
+per connection
+sender -> listener
