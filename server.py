@@ -49,10 +49,11 @@ class connection(thread_template.worker):
             except KeyboardInterrupt:
                 self.killEvent.set()
                 self.soc.close()
-            except Exception as e:
+            except Exception:
                 if e is None:
                     print "huh"
-
+                    
+#this is a test for xmass checkin
 class server(thread_template.worker):
     port = 45000
     def __init__(self, killEvent, queue):
